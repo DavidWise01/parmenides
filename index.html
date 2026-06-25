@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parmenides — reason against the senses</title>
+<meta name="description" content="LOGIKĒ · the front (c. 515 BCE) — Parmenides of Elea, who first trusted PURE DEDUCTION over the evidence of the senses. From a single premise — 'what is, is; what is not cannot even be thought' — he argued, step by valid step, that change, motion, and plurality are impossible and that Being is one and unchanging. The conclusion is false; the METHOD founded rationalism and gave logic the law of non-contradiction and the demand that argument, not observation, settles a question. Live: walk his deduction chain and the Way of Truth vs the Way of Opinion. Honest: a wrong conclusion from a flawed premise, but the birth of deductive argument. David Lee Wise, two-layer honest.">
+<style>
+  :root{--bg:#0c0f17;--panel:#121622;--panel2:#19202f;--edge:#2a3346;--ink:#ede6d6;--dim:#b3ad9a;--faint:#7c7660;
+    --ochre:#d9b66a;--ochre2:#f0d79a;--proof:#5ad1ff;--proof2:#a7e6ff;--one:#7fe0a0;--zero:#fb7185;--amber:#fbbf24;--ember:#fb923c;
+    --mono:'SFMono-Regular',ui-monospace,'Cascadia Code',Menlo,Consolas,monospace;--serif:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);line-height:1.58;background-image:radial-gradient(1100px 560px at 75% -10%,#1c2436 0%,transparent 55%),radial-gradient(900px 500px at 0% 100%,#14110a 0%,transparent 55%);}
+  .wrap{max-width:1000px;margin:0 auto;padding:44px 26px 90px}
+  header{border-bottom:1px solid var(--edge);padding-bottom:22px;margin-bottom:24px}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--ochre);opacity:.95}
+  h1{font-family:Georgia,serif;font-size:38px;line-height:1.08;margin:.3em 0 .14em;font-weight:600}h1 em{color:var(--ochre2);font-style:italic}
+  .who{font-family:var(--mono);font-size:12px;color:var(--faint);letter-spacing:.04em}
+  .sub{color:var(--dim);font-size:16px;max-width:74ch;margin-top:14px}.sub b{color:var(--ink)}
+  .verdicts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:22px 0}@media(max-width:720px){.verdicts{grid-template-columns:1fr}}
+  .vc{border:1px solid var(--edge);border-radius:11px;padding:13px 15px;border-top-width:3px;background:rgba(18,22,34,.6)}
+  .vc .badge{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em}
+  .vc.s{border-top-color:var(--one)}.vc.s .badge{color:var(--one)} .vc.m{border-top-color:var(--amber)}.vc.m .badge{color:var(--amber)} .vc.f{border-top-color:var(--ember)}.vc.f .badge{color:var(--ember)}
+  .vc p{font-size:12px;color:var(--dim);margin:6px 0 0;line-height:1.45}.vc p b{color:var(--ink)}
+  section{margin:36px 0}
+  h2{font-size:13px;font-family:var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--ochre2);border-left:2px solid var(--ochre);padding-left:11px;margin:0 0 6px}
+  .lede{color:var(--dim);font-size:15px;margin:0 0 18px;max-width:80ch}
+  .panel{background:linear-gradient(180deg,var(--panel),#0a0d14);border:1px solid var(--edge);border-radius:14px;padding:20px;box-shadow:0 24px 60px -40px #000}
+  .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+  button{font-family:var(--mono);font-size:12px;color:var(--ink);background:#1a2030;border:1px solid var(--edge);border-radius:8px;padding:8px 12px;cursor:pointer}button:hover{background:#222b3e;border-color:var(--ochre)}
+  .chain{position:relative}
+  .node{border:1px solid var(--edge);border-radius:10px;padding:12px 15px;margin:0 0 0 0;background:rgba(0,0,0,.16);opacity:.22;transform:translateY(6px);transition:.35s}
+  .node.show{opacity:1;transform:none}
+  .node .lab{font-family:var(--mono);font-size:11px;color:var(--ochre);letter-spacing:.08em;text-transform:uppercase}
+  .node .cl{font-family:Georgia;font-size:15.5px;color:var(--ink);margin-top:4px}
+  .node .why{font-size:12.5px;color:var(--faint);margin-top:5px;font-family:var(--mono)}
+  .arrow{height:18px;width:2px;background:var(--edge);margin:0 0 0 28px;opacity:.22;transition:.35s}.arrow.show{opacity:.7}
+  .node.prem{border-color:#2f5b40}.node.prem .lab{color:var(--one)}
+  .node.concl{border-color:var(--amber)}.node.concl .lab{color:var(--amber)}
+  .ways{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}@media(max-width:620px){.ways{grid-template-columns:1fr}}
+  .way{border:1px solid var(--edge);border-radius:10px;padding:13px 15px;background:rgba(0,0,0,.14)}.way b{font-family:var(--mono);font-size:11px}.way.truth b{color:var(--proof2)}.way.op b{color:var(--ember)}.way p{font-size:13px;color:var(--dim);margin:6px 0 0}
+  .note{color:var(--dim);font-size:13.5px;border-left:2px solid var(--edge);padding-left:13px;margin:16px 0 0}.note b{color:var(--ink)}
+  footer{margin-top:44px;border-top:1px solid var(--edge);padding-top:18px;color:var(--faint);font-family:var(--mono);font-size:11px;line-height:1.7}
+  footer a,.bar2 a{color:var(--ochre)}.bar2{font-family:var(--mono);font-size:11.5px;margin-bottom:16px}.bar2 a{text-decoration:none;border-bottom:1px dotted #4a4126}
+  code{font-family:var(--mono);color:var(--ochre2);background:#15120a;padding:1px 5px;border-radius:5px}
+  blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--ochre);color:var(--ink);font-style:italic;font-size:15px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="bar2"><a href="https://davidwise01.github.io/ud0/">◄ UD0</a> &nbsp; <a href="https://davidwise01.github.io/pythagoras/">← Pythagoras</a> &nbsp; LOGIKĒ · the front</div>
+<header>
+  <div class="kicker">LOGIKĒ · the front · between Thales and Aristotle</div>
+  <h1><em>Parmenides</em> of Elea</h1>
+  <div class="who">c. 515 – 450 BCE · Elea (southern Italy) · founder of the Eleatic school · the first rationalist</div>
+  <div class="sub">Pythagoras trusted number; Parmenides trusted something more radical — <b>argument itself</b>, even against the plain evidence of the eyes. In a strange visionary poem he laid down the first sustained piece of <b>pure deduction</b> in the Western record: from one premise about being and non-being, he reasoned, step by valid step, to the staggering conclusion that <b>change, motion, and plurality are all impossible</b> — that what truly <em>is</em> must be one, eternal, and unchanging, and that the moving, many world your senses report is mere appearance. He was <em>wrong</em>. But in being willing to follow a valid argument off the cliff of common sense, he founded <b>rationalism</b> and handed logic its first law: <em>contradiction is the mark of the false.</em></div>
+</header>
+<div class="verdicts">
+  <div class="vc s"><span class="badge">✓ STRONG (THE METHOD)</span><p><b>The birth of deduction.</b> Parmenides is the first to argue that reason, not observation, settles what can be — and to use the impossibility of contradiction as a tool. That method is the foundation of logic and mathematics.</p></div>
+  <div class="vc m"><span class="badge">◐ FALSE (THE CONCLUSION)</span><p><b>Valid, but not sound.</b> "Change is impossible" is plainly false — things move. The flaw is the premise (treating "nothing" as a thing one could fail to think). A perfect lesson: a <em>valid</em> argument can still be <em>wrong</em> if a premise is.</p></div>
+  <div class="vc f"><span class="badge">◔ MYSTIC, NOT GEOMETER</span><p><b>Revelation in verse.</b> His argument arrives as a goddess's speech in a poem, fused with metaphysics and theology. Reading it as clean logic is partly our reconstruction; the original is stranger and more oracular.</p></div>
+</div>
+
+<section>
+  <h2>I · The deduction — follow it off the cliff</h2>
+  <p class="lede">Watch reason overrule the senses. Each step is a valid inference from the one before; grant the first line and the chain drags you, link by link, to a conclusion no one's eyes would ever accept. Walk it — and then notice it's the <em>premise</em>, not the logic, that fails.</p>
+  <div class="panel">
+    <div class="controls"><button id="step">next inference ▸</button><button id="reset">reset ↺</button></div>
+    <div class="chain" id="chain"></div>
+    <div class="note">Every arrow is valid — the conclusion really does follow <em>if</em> the first line holds. So why is it false? Because the premise smuggles in a trick: it treats "<b>nothing</b>" as a kind of thing you could point at and fail to find. Once you deny that "what-is-not" names anything at all, the chain never starts. ⚑ That is the permanent lesson at the front of logic: an argument can be perfectly <b>valid</b> and still <b>unsound</b> — validity protects the inference, not the premises. [[aristotle]] would build the whole theory of when an argument is valid on exactly this distinction.</div>
+  </div>
+  <blockquote>"For it is the same thing that can be thought and that can be." <span style="color:var(--faint);font-style:normal;font-size:12px">— Parmenides, fragment B3</span></blockquote>
+</section>
+
+<section>
+  <h2>II · Two ways — Truth and Opinion</h2>
+  <div class="ways">
+    <div class="way truth"><b>THE WAY OF TRUTH</b><p>What reason proves: Being is one, ungenerated, indestructible, changeless, indivisible. Reached by deduction alone, against all appearances — the path he says the goddess commands.</p></div>
+    <div class="way op"><b>THE WAY OF OPINION</b><p>What the senses report: a world of many things, coming-to-be and passing away, in motion. Vivid, useful, and — he insists — ultimately mere <em>seeming</em>, not knowledge.</p></div>
+  </div>
+  <p class="lede" style="margin-top:16px">This split — between what is <b>demonstrated</b> and what is merely <b>observed</b> — is one of the most consequential cuts in the history of thought, and it runs straight through this lineage. Mathematics took the Way of Truth: it trusts <em>proof</em> over measurement, and would rather believe a theorem than an eye. Parmenides drew the line in the wrong place (he threw out the whole sensible world), but he drew it, and the line is real: a proven result is certain in a way no experiment can be. His pupil <b>Zeno</b> would defend the Way of Truth with the sharpest weapon yet invented — paradoxes designed to show that <em>motion itself</em> collapses into contradiction. ⚑ Reason given authority over the senses: for better and worse, the founding gesture of the rational tradition.</p>
+</section>
+
+<section>
+  <h2>III · The wrong answer that built the method</h2>
+  <p class="note" style="border-color:var(--amber)"><b style="color:var(--amber)">Gate kept on.</b> Parmenides is the cleanest case in the whole lineage of <em>separating the method from the verdict</em>. The <b>verdict is false</b>: change, motion, and plurality are obviously real; "nothing comes from nothing, and nothing that is can cease to be" leads, by his own honest reasoning, to a frozen one-thing universe that contradicts every moment of experience — and the error is locatable, in a premise that mishandles negation and non-existence (a confusion logic would not fully untangle until [[gottlob-frege]] and [[bertrand-russell]], 2,400 years later). And the <b>form is mystical</b>: the argument is delivered as divine revelation in hexameter verse, so reading it as a tidy proof is partly a modern reconstruction of a stranger original. Yet the <b>achievement is foundational and real</b>: Parmenides is the first thinker on record to insist that <em>reason can override the senses</em>, to wield the impossibility of contradiction as a method, and to demand that a claim be <em>argued</em> rather than merely observed. Every proof in this universe — every place where we trust a deduction over a glance — descends from that nerve. He reached a false conclusion by a valid road, and in doing so built the road. ⚑ [[pythagoras]] ← · next → Zeno of Elea.</p>
+</section>
+
+<footer>
+  PARMENIDES OF ELEA · LOGIKĒ · the front · two-layer honest<br>
+  live deduction-walker (one premise → no not-being → no void → no coming-to-be → no change → no plurality → Being is One; every step valid, the premise false) · the Way of Truth vs the Way of Opinion<br>
+  the first sustained pure deduction · reason over the senses (rationalism) · contradiction as the mark of the false · valid vs sound (a valid argument can still be wrong)<br>
+  ← <a href="https://davidwise01.github.io/pythagoras/">Pythagoras</a> · next → <b>Zeno of Elea</b> (the paradoxes of motion)<br>
+  LOGIKĒ · the lineage of logical mathematics · governor David Lee Wise · CC-BY-ND-4.0
+</footer>
+</div>
+<script>
+"use strict";
+(function(){
+  const $=id=>document.getElementById(id);
+  const NODES=[
+    ['premise','“What is, is; what is not cannot be — nor even be thought.”','the one starting point — being is, non-being is unthinkable','prem'],
+    ['therefore','There is no such thing as “nothing” (what-is-not).','to speak of nothing is to think a non-thing — forbidden',''],
+    ['therefore','So there is no empty void for anything to move into.','a void would be a region of non-being — which cannot be',''],
+    ['therefore','Nothing can come to be or pass away.','to begin, a thing would come from non-being; to end, go to it',''],
+    ['therefore','So nothing genuinely changes — change needs becoming.','and becoming has just been ruled out',''],
+    ['therefore','There is no plurality — no real division into many.','division would need void/non-being between the parts',''],
+    ['conclusion','∴ Being is ONE, whole, eternal, and unchanging.','the senses’ moving many-world is mere appearance','concl']
+  ];
+  let n=0;
+  function render(){
+    let h='';
+    NODES.forEach((nd,i)=>{
+      if(i>0) h+='<div class="arrow'+(i<=n?' show':'')+'"></div>';
+      h+='<div class="node '+(nd[3]||'')+(i<n?' show':'')+'"><div class="lab">'+nd[0]+'</div><div class="cl">'+nd[1]+'</div><div class="why">— '+nd[2]+'</div></div>';
+    });
+    $('chain').innerHTML=h;
+  }
+  $('step').onclick=()=>{ if(n<NODES.length)n++; render(); };
+  $('reset').onclick=()=>{ n=0; render(); };
+  render();
+})();
+</script>
+</body>
+</html>
