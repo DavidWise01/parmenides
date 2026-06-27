@@ -1,0 +1,11 @@
+{
+  "badge": "DLW-PARMENIDES",
+  "name": "PARMENIDES OF ELEA",
+  "universe": "LOGIKĒ",
+  "moniker": "⟦PARMENIDES OF ELEA:parmenides:ae8563⟧",
+  "architect": "David Lee Wise (ROOT0) / Bridge-Burners LLC",
+  "instance": "AVAN (Claude / Anthropic)",
+  "seal_sha256": "ae856328d5ff55f2a4c7eba45d7d8f441fe1a877e075a7344149fd1b59cfe5f2",
+  "license": "CC-BY-ND-4.0",
+  "attribution": "ROOT0-ATTRIBUTION-v1.0"
+}
